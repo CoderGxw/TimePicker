@@ -13,8 +13,9 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import androidx.core.content.ContextCompat;
+
 import com.liuwan.demo.R;
+
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
@@ -113,8 +114,8 @@ public class PickerView extends View {
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaint.setStyle(Style.FILL);
         mPaint.setTextAlign(Align.CENTER);
-        mLightColor = ContextCompat.getColor(mContext, R.color.date_picker_text_light);
-        mDarkColor = ContextCompat.getColor(mContext, R.color.date_picker_text_dark);
+        mLightColor = getResources().getColor(R.color.date_picker_text_light);
+        mDarkColor = getResources().getColor(R.color.date_picker_text_dark);
     }
 
     @Override
