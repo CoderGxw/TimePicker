@@ -39,9 +39,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
         if(v.getId()== R.id.ll_time){
             mTimerPicker.show(mTvSelectedTime.getText().toString());
         }
-        else if (v.getId() == R.id.ll_date) {
-            mDatePicker.show(mTvSelectedDate.getText().toString());
-        }
 
     }
 

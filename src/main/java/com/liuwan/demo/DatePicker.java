@@ -34,24 +34,26 @@ public class DatePicker extends LinearLayout {
         mTvSelectedDate.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                System.out.println(DateFormatUtils.long2Str(System.currentTimeMillis(), false));
-                mDatePicker.show(DateFormatUtils.long2Str(System.currentTimeMillis(), false));
+                if(null!=DateText&&DateFormatUtils.isYYYYMMDD(DateText)){
+                    mDatePicker.show(DateText);
+                }else{
+                    mDatePicker.show(DateFormatUtils.long2Str(System.currentTimeMillis(), false));
+                }
             }
         });
     }
 
     private void initDatePicker(){
-        //以年为单位
-        long diff = 1000 * 60 * 60 * 24 *30 * 12 * 365;
-        String beginTime ="2010-01-01";//DateFormatUtils.long2Str(System.currentTimeMillis(), false);
-        String endTime ="2019-01-014";//DateFormatUtils.long2Str(System.currentTimeMillis()+diff, false);
+        String beginTime =DateFormatUtils.getBeforeDate("yyyy-MM-dd",365*50);//DateFormatUtils.long2Str(System.currentTimeMillis()-diff, false);
+        String endTime =DateFormatUtils.getBeforeDate("yyyy-MM-dd",0);//DateFormatUtils.long2Str(System.currentTimeMillis(), false);
+        System.out.println("beginDate"+beginTime+"/endDate"+endTime);
         if(null!=DateRangeStart&&DateFormatUtils.isYYYYMMDD(DateRangeStart)){
             beginTime = DateRangeStart;
         }
         if(null!=DateRangeEnd&&DateFormatUtils.isYYYYMMDD(DateRangeEnd)){
             endTime = DateRangeEnd;
         }
-        // 通过日期字符串初始化日期，格式请用：yyyy-MM-dd HH:mm
+        // 通过日期字符串初始化日期，格式请用：yyyy-MM-dd
         mDatePicker = new CustomDatePicker(this.getContext(), new CustomDatePicker.Callback() {
             @Override
             public void onTimeSelected(long timestamp) {

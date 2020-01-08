@@ -1,6 +1,7 @@
 package com.liuwan.demo.datepicker;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import java.util.regex.Matcher;
@@ -62,25 +63,37 @@ public class DateFormatUtils {
 
     /**
      * 判断字符串格式是否为YYYY-MM-DD
+     *
      * @param YYYYMMDD
      * @return
      */
-    public static  boolean isYYYYMMDD(String YYYYMMDD){
+    public static boolean isYYYYMMDD(String YYYYMMDD) {
         Pattern p = Pattern
                 .compile("^(\\d{4})-(0\\d{1}|1[0-2])-(0\\d{1}|[12]\\d{1}|3[01])$");
         Matcher matcher = p.matcher(YYYYMMDD);
         return matcher.matches();
     }
+
     /**
      * 判断字符串格式是否为YYYY-MM-DD HH:MM
+     *
      * @param YYYYMMDDHHMM
      * @return
      */
-    public static boolean isYYYYMMDDHHMM(String YYYYMMDDHHMM){
+    public static boolean isYYYYMMDDHHMM(String YYYYMMDDHHMM) {
         Pattern p = Pattern
                 .compile("^(\\d{4})-(0\\d{1}|1[0-2])-(0\\d{1}|[12]\\d{1}|3[01])\\s(0\\d{1}|1\\d{1}|2[0-3]):([0-5]\\d{1})$");
         Matcher matcher = p.matcher(YYYYMMDDHHMM);
         return matcher.matches();
     }
 
+    public static String getBeforeDate(String pattern,int day) {
+        SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+        Date dBefore = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        calendar.add(Calendar.DAY_OF_MONTH, -day);//往上推一天  30推三十天  365推一年
+        String date = sdf.format(calendar.getTime());
+        return date;
+    }
 }

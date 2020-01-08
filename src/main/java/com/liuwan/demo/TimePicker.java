@@ -34,15 +34,20 @@ public class TimePicker extends LinearLayout {
         mTvSelectedTime.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                mTimerPicker.show(DateFormatUtils.long2Str(System.currentTimeMillis(), true));
+                if(null!=TimeText&&DateFormatUtils.isYYYYMMDDHHMM(TimeText)){
+                    mTimerPicker.show(TimeText);
+                }else{
+                    mTimerPicker.show(DateFormatUtils.long2Str(System.currentTimeMillis(), true));
+                }
             }
         });
     }
     private void initTimerPicker() {
-        //以年为单位
-        long diff = 1000 * 60 * 60 * 24 *30 * 12 * 365;
-        String beginTime =DateFormatUtils.long2Str(System.currentTimeMillis(), true);
-        String endTime =DateFormatUtils.long2Str(System.currentTimeMillis()+diff, true);
+        //diff为1年
+        long diff = 1000 * 60 * 60 * 24 * 365;
+        String beginTime =DateFormatUtils.getBeforeDate("yyyy-MM-dd hh:mm",365);
+        String endTime =DateFormatUtils.getBeforeDate("yyyy-MM-dd hh:mm",-365);
+        System.out.println("beginTime"+beginTime+"/endTime"+endTime);
         if(null!=TimeRangeStart&&DateFormatUtils.isYYYYMMDDHHMM(TimeRangeStart)){
             beginTime = TimeRangeStart;
         }
@@ -62,7 +67,7 @@ public class TimePicker extends LinearLayout {
         // 显示时和分
         mTimerPicker.setCanShowPreciseTime(true);
         // 允许循环滚动
-        mTimerPicker.setScrollLoop(true);
+        mTimerPicker.setScrollLoop(false);
         // 允许滚动动画
         mTimerPicker.setCanShowAnim(true);
     }
