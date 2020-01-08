@@ -8,7 +8,9 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
+
 import com.liuwan.demo.R;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -23,6 +25,7 @@ import java.util.List;
  */
 public class CustomDatePicker implements View.OnClickListener, PickerView.OnSelectListener {
 
+    View.OnClickListener listener = null;
     private Context mContext;
     private Callback mCallback;
     private Calendar mBeginTime, mEndTime, mSelectedTime;
@@ -73,10 +76,11 @@ public class CustomDatePicker implements View.OnClickListener, PickerView.OnSele
      * @param beginDateStr 日期字符串，格式为 yyyy-MM-dd HH:mm
      * @param endDateStr   日期字符串，格式为 yyyy-MM-dd HH:mm
      */
-    public CustomDatePicker(Context context, Callback callback, String beginDateStr, String endDateStr) {
-        this(context, callback, DateFormatUtils.str2Long(beginDateStr, true),
-                DateFormatUtils.str2Long(endDateStr, true));
+    public CustomDatePicker(Context context, Callback callback, String beginDateStr, String endDateStr,boolean isPreciseTime) {
+        this(context, callback, DateFormatUtils.str2Long(beginDateStr, isPreciseTime),
+                DateFormatUtils.str2Long(endDateStr, isPreciseTime));
     }
+
 
     /**
      * 通过时间戳初始换时间选择器，毫秒级别
@@ -91,7 +95,6 @@ public class CustomDatePicker implements View.OnClickListener, PickerView.OnSele
             mCanDialogShow = false;
             return;
         }
-
         mContext = context;
         mCallback = callback;
         mBeginTime = Calendar.getInstance();
@@ -134,6 +137,18 @@ public class CustomDatePicker implements View.OnClickListener, PickerView.OnSele
         mDpvHour.setOnSelectListener(this);
         mDpvMinute = mPickerDialog.findViewById(R.id.dpv_minute);
         mDpvMinute.setOnSelectListener(this);
+    }
+
+    /**
+     * //单击事件处理接口
+     */
+    public static abstract interface  OnClickListener{
+        public abstract void onClick();
+    }
+    //实现这个View的监听器
+
+    public void setOnClickListener(View.OnClickListener  listener){
+        this.listener = listener;   //引用监听器类对象,在这里可以使用监听器类的对象
     }
 
     @Override
@@ -469,6 +484,7 @@ public class CustomDatePicker implements View.OnClickListener, PickerView.OnSele
      * @param dateStr 日期字符串，格式为 yyyy-MM-dd 或 yyyy-MM-dd HH:mm
      */
     public void show(String dateStr) {
+        System.out.println("dateStr"+dateStr);
         if (!canShow() || TextUtils.isEmpty(dateStr)) return;
 
         // 弹窗时，考虑用户体验，不展示滚动动画

@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.liuwan.demo.datepicker.CustomDatePicker;
 import com.liuwan.demo.datepicker.DateFormatUtils;
 
@@ -28,7 +27,6 @@ public class TimePicker extends LinearLayout {
         textSize = array.getDimensionPixelSize(R.styleable.TimePickView_textSize,15);
         TimeRangeStart = array.getString(R.styleable.TimePickView_TimeRangeStart);
         TimeRangeEnd = array.getString(R.styleable.TimePickView_TimeRangeEnd);
-        DateFormatUtils.long2Str(System.currentTimeMillis(), false);
         mTvSelectedTime = (TextView)findViewById(R.id.tv_TimePicker);
         mTvSelectedTime.setTextSize(textSize);
         mTvSelectedTime.setTextColor(textColor);
@@ -58,7 +56,7 @@ public class TimePicker extends LinearLayout {
                 mTvSelectedTime.setText(DateFormatUtils.long2Str(timestamp, true));
                 TimeText= mTvSelectedTime.getText().toString();
             }
-        }, beginTime, endTime);
+        }, beginTime, endTime,true);
         // 允许点击屏幕或物理返回键关闭
         mTimerPicker.setCancelable(true);
         // 显示时和分

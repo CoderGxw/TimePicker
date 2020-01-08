@@ -36,7 +36,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        if(v.getId()== R.id.ll_time){mTimerPicker.show(mTvSelectedTime.getText().toString());}
+        if(v.getId()== R.id.ll_time){
+            mTimerPicker.show(mTvSelectedTime.getText().toString());
+        }
+        else if (v.getId() == R.id.ll_date) {
+            mDatePicker.show(mTvSelectedDate.getText().toString());
+        }
+
     }
 
     @Override
@@ -80,7 +86,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             public void onTimeSelected(long timestamp) {
                 mTvSelectedTime.setText(DateFormatUtils.long2Str(timestamp, true));
             }
-        }, beginTime, endTime);
+        }, beginTime, endTime,true);
         // 允许点击屏幕或物理返回键关闭
         mTimerPicker.setCancelable(true);
         // 显示时和分

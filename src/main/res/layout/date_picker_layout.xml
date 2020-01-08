@@ -3,15 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-<TextView
-    android:id="@+id/tv_TimePicker"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center"
-    android:layout_above="@+id/line_bottom"
-    android:textColor="#ffffff"
-    android:text="请选择时间"
-    android:paddingBottom="2dp"/>
+    <TextView
+        android:id="@+id/tv_DatePicker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_above="@+id/line_bottom"
+        android:textColor="#ffffff"
+        android:text="请选择日期"
+        android:paddingBottom="2dp"/>
     <ImageView
         android:id="@+id/line_bottom"
         android:layout_alignParentBottom="true"
