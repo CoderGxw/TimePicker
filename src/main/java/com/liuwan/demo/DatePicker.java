@@ -78,4 +78,8 @@ public class DatePicker extends LinearLayout {
         mTvSelectedDate.setText(newText);
         this.DateText="";
     }
+
+    public void setEnabled(boolean enabled){
+        mTvSelectedDate.setEnabled(enabled);
+    }
 }

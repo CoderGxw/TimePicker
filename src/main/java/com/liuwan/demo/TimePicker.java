@@ -81,4 +81,8 @@ public class TimePicker extends LinearLayout {
         this.TimeText="";
     }
 
+    public void setEnabled(boolean enabled){
+            mTvSelectedTime.setEnabled(enabled);
+    }
+
 }
