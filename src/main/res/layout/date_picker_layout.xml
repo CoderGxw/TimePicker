@@ -11,6 +11,7 @@
         android:layout_above="@+id/line_bottom"
         android:textColor="#ffffff"
         android:text="请选择日期"
+        android:hint="d4d4d9"
         android:paddingBottom="2dp"/>
     <ImageView
         android:id="@+id/line_bottom"
