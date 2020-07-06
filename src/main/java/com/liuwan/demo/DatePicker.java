@@ -84,7 +84,7 @@ public class DatePicker extends LinearLayout {
     }
 
     public void setDateRangeStart(String DateRangeStart){
-        this.DateRangeStart = DateRangeStart
+        this.DateRangeStart = DateRangeStart;
     }
 
     public void setDateRangeEnd(String DateRangeEnd){
