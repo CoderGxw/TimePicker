@@ -82,4 +82,12 @@ public class DatePicker extends LinearLayout {
     public void setEnabled(boolean enabled){
         mTvSelectedDate.setEnabled(enabled);
     }
+
+    public void setDateRangeStart(String DateRangeStart){
+        this.DateRangeStart = DateRangeStart
+    }
+
+    public void setDateRangeEnd(String DateRangeEnd){
+        this.DateRangeEnd = DateRangeEnd;
+    }
 }
