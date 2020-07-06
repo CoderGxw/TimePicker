@@ -78,7 +78,7 @@ public class TimePicker extends LinearLayout {
 
     public void setText(String newText){
         mTvSelectedTime.setText(newText);
-        this.TimeText="";
+        this.TimeText=newText;
     }
 
     public void setEnabled(boolean enabled){
