@@ -60,6 +60,11 @@ public class DatePicker extends LinearLayout {
                 mTvSelectedDate.setText(DateFormatUtils.long2Str(timestamp, false));
                 DateText= mTvSelectedDate.getText().toString();
             }
+            @Override
+            public void onCancelTime(){
+                mTvSelectedDate.setText("");
+                DateText="";
+            }
         }, beginTime, endTime,false);
         // 允许点击屏幕或物理返回键关闭
         mDatePicker.setCancelable(true);

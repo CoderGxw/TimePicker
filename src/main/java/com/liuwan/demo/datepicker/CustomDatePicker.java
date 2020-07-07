@@ -67,6 +67,7 @@ public class CustomDatePicker implements View.OnClickListener, PickerView.OnSele
      */
     public interface Callback {
         void onTimeSelected(long timestamp);
+        void onCancelTime();
     }
 
     /**
@@ -154,7 +155,9 @@ public class CustomDatePicker implements View.OnClickListener, PickerView.OnSele
     @Override
     public void onClick(View v) {
         if(v.getId()==R.id.tv_cancel){
-
+            if (mCallback != null) {
+                mCallback.onCancelTime();
+            }
         }else if((v.getId()==R.id.tv_confirm)){
             if (mCallback != null) {
                 mCallback.onTimeSelected(mSelectedTime.getTimeInMillis());

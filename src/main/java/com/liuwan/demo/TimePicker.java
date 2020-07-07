@@ -61,6 +61,11 @@ public class TimePicker extends LinearLayout {
                 mTvSelectedTime.setText(DateFormatUtils.long2Str(timestamp, true));
                 TimeText= mTvSelectedTime.getText().toString();
             }
+            @Override
+            public void onCancelTime(){
+                mTvSelectedDate.setText("");
+                DateText="";
+            }
         }, beginTime, endTime,true);
         // 允许点击屏幕或物理返回键关闭
         mTimerPicker.setCancelable(true);
