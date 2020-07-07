@@ -60,6 +60,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
             public void onTimeSelected(long timestamp) {
                 mTvSelectedDate.setText(DateFormatUtils.long2Str(timestamp, false));
             }
+            @Override
+            public void onCancelTime(){
+
+            }
         }, beginTimestamp, endTimestamp);
         // 不允许点击屏幕或物理返回键关闭
         mDatePicker.setCancelable(false);
@@ -82,6 +86,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
             @Override
             public void onTimeSelected(long timestamp) {
                 mTvSelectedTime.setText(DateFormatUtils.long2Str(timestamp, true));
+            }
+            @Override
+            public void onCancelTime(){
+
             }
         }, beginTime, endTime,true);
         // 允许点击屏幕或物理返回键关闭
