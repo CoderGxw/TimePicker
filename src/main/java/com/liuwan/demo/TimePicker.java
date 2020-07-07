@@ -63,8 +63,8 @@ public class TimePicker extends LinearLayout {
             }
             @Override
             public void onCancelTime(){
-                mTvSelectedDate.setText("");
-                DateText="";
+                mTvSelectedTime.setText("");
+                TimeText="";
             }
         }, beginTime, endTime,true);
         // 允许点击屏幕或物理返回键关闭
