@@ -645,11 +645,7 @@ public class CustomDatePicker implements View.OnClickListener, PickerView.OnSele
                 //隐藏导航栏
                 View.SYSTEM_UI_FLAG_HIDE_NAVIGATION|
                 View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
-        if (Build.VERSION.SDK_INT>=19){
-            uiOptions |= 0x00001000;
-        }else{
-            uiOptions |= View.SYSTEM_UI_FLAG_LOW_PROFILE;
-        }
+       
         window.getDecorView().setSystemUiVisibility(uiOptions) ;
         window.getDecorView().setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
             @Override
